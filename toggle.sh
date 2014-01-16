@@ -1,8 +1,10 @@
-#!/bin/sh
-                                                                                                                                                                                                                                                                                                                                                                                                                             
-trim() { echo $1; }                                                                                                                                                                                                                                
-target=$(trim `wmctrl -lx | grep 'Pidgin' | grep -v 'Buddy' | grep -Eo '\-(.*)$' | grep -o '\s.*$'`)
+#!/bin/bash
+                                                                                                                                                                                                                                                                                                                                                                                                                           
+trim() { echo $1; }
 
+target=$(trim `wmctrl -lx | grep 'Pidgin.Pidgin' | grep -v 'Buddy' | grep -Po '[^\s]+$'`)
+
+echo $target
 # Unshade and bring to front
 if [ -f /tmp/.quake.shaded ]; then
     wmctrl -r $target -b remove,below
